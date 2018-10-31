@@ -1,0 +1,35 @@
+page-login {
+    text-align: center;
+    ion-input {
+        background: transparent;
+    }
+    ion-item {
+        background-color: #262626 !important;
+        margin-bottom: 10px !important;
+        border-radius: 6px;
+        .item-inner {
+            border: none !important;
+        }
+    }
+    .button {
+        margin-bottom: 10px;
+        .button-inner {
+            color: #ffffff;
+        }
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    .cadastro {
+        border: none;
+    }
+    .recuperar-senha {
+        border: none;
+        .button-inner {
+            color: #999999;
+        }
+    }
+    h5 {
+        margin-bottom: 20px;
+    }
+}

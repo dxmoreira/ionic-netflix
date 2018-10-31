@@ -1,0 +1,23 @@
+page-movies {
+  h4 {
+    color: $white;
+  }
+  ion-scroll {
+      white-space: nowrap;
+      height: 40vw;
+      .scroll-content {
+          padding: 0 !important;
+          overflow-y: hidden;
+          img {
+              margin-right: 7px;
+              width: 27vw;
+          }
+      }
+  }
+  .logo {
+    padding-left: 35px;
+  }
+  .title-ios {
+    padding-left: 80px;
+  }
+}

@@ -1,0 +1,16 @@
+page-signup {
+    ion-input {
+        background: transparent;
+    }
+    ion-item {
+        background-color: #262626 !important;
+        margin-bottom: 10px !important;
+        border-radius: 6px;
+        .item-inner {
+            border: none !important;
+        }
+    }
+    .toolbar-title {
+        color: $white;
+    }
+}

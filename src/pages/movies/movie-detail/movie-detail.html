@@ -1,0 +1,57 @@
+
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-title>
+      {{movie?.title}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class='page-content'>
+  <div *ngIf="this.movie; let movie">
+    <img *ngIf="movie.backdrop_path" src="{{'https://image.tmdb.org/t/p/w500'+movie.backdrop_path}}"/>
+    <ion-card>
+      <div class="card-subtitle">
+        <!-- <ion-list>
+          <ion-item class="item-info">
+            <ion-badge class="badge-info" *ngFor="let genre of movie.genres" item-start>{{genre.name}}</ion-badge>
+          </ion-item>
+          <ion-item class="item-info">
+            <ion-badge  item-start class="badge-info" *ngFor="let company of movie.production_companies">{{company.name}}</ion-badge>
+          </ion-item>
+        </ion-list> -->
+        <ion-row class="small-padding">
+          <ion-col>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='star'></ion-icon>
+              {{movie.vote_average}}
+            </button>
+          </ion-col>
+          <ion-col text-center>
+            <button ion-button clear small color="danger" icon-start>
+              <ion-icon name='calendar'></ion-icon>
+              {{movie.release_date | date}}
+            </button>
+          </ion-col>
+        </ion-row>
+      </div>
+      <ion-card-content>
+        {{movie.overview}}
+      </ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-5 text-left>
+            <button ion-button clear small (click)="favorito(movie.id)">
+              <ion-icon name='md-checkmark'></ion-icon> Minha Lista
+            </button>
+          </ion-col>
+          <ion-col col-7 text-right *ngIf="videoResults(movie)">
+            <button (click)="trailer('https://www.youtube.com/watch?v=' + movie.videos.results[0].key)" ion-button clear small class="assistir">
+              <ion-icon name='share-alt'></ion-icon> Assistir Trailer
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </div>
+</ion-content>

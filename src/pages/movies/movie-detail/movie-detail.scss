@@ -1,0 +1,31 @@
+movie-detail {
+  .page-content{
+    background: color($colors, dark);
+  }
+
+  ion-navbar{
+    border-bottom-color: $red;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+  }
+  
+  ion-card {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+
+  .button {
+    ion-icon {
+      padding-right: 5px;
+    }
+  }
+  .assistir {
+    ion-icon {
+      color: $red;
+      padding-right: 5px;
+    }
+    .button-inner {
+      color: $red;
+    }
+  }
+}

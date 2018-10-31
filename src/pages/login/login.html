@@ -1,0 +1,29 @@
+<ion-content padding>
+  <div class="logo">
+    <img src="assets/netflix-logo.png" width=150>
+  </div>
+  <h5>Seja bem-vindo(a)</h5>
+  <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+    <ion-item [class.invalid]="!loginForm.controls.email.valid && loginForm.controls.email.touched" [class.valid]="loginForm.controls.email.valid && loginForm.controls.email.touched">
+      <ion-input formControlName="email" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.email.valid && loginForm.controls.email.touched">
+      <p>Informe um e-mail válido.</p>
+    </ion-item>
+    <ion-item [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.touched" [class.valid]="loginForm.controls.password.valid && loginForm.controls.password.touched">
+      <ion-input formControlName="password" type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+    <ion-item class="error-message" *ngIf="!loginForm.controls.password.valid && loginForm.controls.password.touched">
+      <p>Sua senha precisa de mais de 6 caracteres.</p>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!loginForm.valid">
+      Entrar
+    </button>
+  </form>
+  <button class="cadastro" ion-button outline block (click)="goToSignup()">
+    Registrar
+  </button>
+  <button class="recuperar-senha" ion-button outline block small (click)="goToResetPassword()">
+    Recuperar senha
+  </button>
+</ion-content>

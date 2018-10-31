@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="logo"><img src="assets/netflix-logo.png" width=100/></ion-title>
+    <!--<ion-buttons end class='search-bar'>
+      <ion-searchbar #search (ionChange)='searchMovie(search.value)' placeholder="Buscar"></ion-searchbar>
+    </ion-buttons>-->
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="ios-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+  <!-- <ion-toolbar no-border-top  color='primary'>
+    <ion-segment [(ngModel)]="movieSelection" (ionChange)='getSelection(movieSelection)'>
+      <ion-segment-button value="now_playing" class='options_button'>
+        In Theater
+      </ion-segment-button>
+      <ion-segment-button value="popular" class='options_button'>
+        Popular
+      </ion-segment-button>
+      <ion-segment-button value="top_rated" class='options_button'>
+        Top Rated
+      </ion-segment-button>
+      <ion-segment-button value="upcoming" class='options_button'>
+        Upcoming
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar> -->
+</ion-header>
+
+<ion-content padding class='page-content'>
+  <h5>Minha Lista</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <span *ngFor='let movie of movies'><img (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/></span>
+  </ion-scroll>
+
+  <h5>Populares</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>
+
+  <h5>Em Alta</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>  
+
+  <h5>Ação</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>  
+
+  <h5>Comédia</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>  
+
+  <h5>Drama</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>  
+
+  <h5>Animação</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>  
+
+  <h5>Documentário</h5>
+  <ion-scroll scrollX="true" no-padding>
+    <img *ngFor='let movie of movies' (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+  </ion-scroll>
+
+</ion-content>
