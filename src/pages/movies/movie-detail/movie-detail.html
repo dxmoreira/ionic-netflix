@@ -12,14 +12,6 @@
     <img *ngIf="movie.backdrop_path" src="{{'https://image.tmdb.org/t/p/w500'+movie.backdrop_path}}"/>
     <ion-card>
       <div class="card-subtitle">
-        <!-- <ion-list>
-          <ion-item class="item-info">
-            <ion-badge class="badge-info" *ngFor="let genre of movie.genres" item-start>{{genre.name}}</ion-badge>
-          </ion-item>
-          <ion-item class="item-info">
-            <ion-badge  item-start class="badge-info" *ngFor="let company of movie.production_companies">{{company.name}}</ion-badge>
-          </ion-item>
-        </ion-list> -->
         <ion-row class="small-padding">
           <ion-col>
             <button ion-button clear small color="danger" icon-start>
@@ -42,7 +34,9 @@
         <ion-row>
           <ion-col col-5 text-left>
             <button ion-button clear small (click)="favorito(movie.id)">
-              <ion-icon name='md-checkmark'></ion-icon> Minha Lista
+              <ion-icon name='add'></ion-icon>
+              <!-- <ion-icon name='checkmark'></ion-icon> -->
+              Minha Lista
             </button>
           </ion-col>
           <ion-col col-7 text-right *ngIf="videoResults(movie)">

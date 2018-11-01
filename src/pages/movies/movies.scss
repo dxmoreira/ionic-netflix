@@ -20,4 +20,13 @@ page-movies {
   .title-ios {
     padding-left: 80px;
   }
+  ion-searchbar {
+    .searchbar-input {
+      color: $white !important;
+      background-color: #262626 !important;
+    }
+    .searchbar-input::-webkit-input-placeholder {
+      color: $white;
+    }
+  }
 }

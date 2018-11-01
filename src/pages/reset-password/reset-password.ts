@@ -49,7 +49,7 @@ export class ResetPasswordPage {
       } catch (error) {
         await loading.dismiss();
         const alert: Alert = this.alertCtrl.create({
-          message: error.message,
+          message: 'O e-mail informado não possui cadastro.<br><br>Retorne a tela do login e clique no botão REGISTRAR.',
           buttons: [{ text: 'Ok', role: 'cancel' }]
         });
         alert.present();

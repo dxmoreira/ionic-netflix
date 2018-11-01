@@ -6,32 +6,19 @@ import * as firebase from 'firebase';
 import 'firebase/firestore';
 import { Http } from '@angular/http';
 
-/*
-  Generated class for the DatabaseProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class DatabaseProvider {
 
   private _DB: any;
 
   constructor(public http: Http) {
-    console.log('Hello DatabaseProvider Provider');
     this._DB = firebase.firestore();
   }
 
-  /**
-  * Create the database collection and defines an initial document
-  * Note the use of merge : true flag within the returned promise  - this
-  * is needed to ensure that the collection is not repeatedly recreated should
-  * this method be called again (we DON'T want to overwrite our documents!)
-  */
-
-  createAndPopulateDocument(collectionObj: string,
-                            docID: string,
-                            dataObj: any) : Promise<any>{
+  createAndPopulateDocument(
+      collectionObj: string,
+      docID: string,
+      dataObj: any) : Promise<any> {
      return new Promise((resolve, reject) => {
        this._DB
        .collection(collectionObj)
@@ -46,27 +33,19 @@ export class DatabaseProvider {
      })
   }
 
-  /*
-   * Return documents from specific database collection
-   */
-
   getDocuments(collectionObj: string) : Promise<any>{
     return new Promise((resolve, reject) => {
       this._DB.collection(collectionObj)
       .get()
       .then((querySnapshot) => {
         let obj : any = [];
-
         querySnapshot
         .forEach((doc: any) => {
           obj.push({
-           id             : doc.id,
-           city           : doc.data().city,
-           population     : doc.data().population,
-           established    : doc.data().established
+           id: doc.id,
+           addFavorito: doc.data().addFavorito
           });
         });
-
         resolve(obj);
       })
       .catch((error : any) => {
@@ -75,12 +54,9 @@ export class DatabaseProvider {
     });
   }
 
-  /**
-   * Add a new document to a selected database collection
-   */
-
-  addDocument(collectionObj : string,
-              dataObj : any) : Promise<any>{
+  addDocument(
+    collectionObj: string,
+    dataObj: any): Promise<any>{
     return new Promise((resolve, reject) => {
       this._DB.collection(collectionObj).add(dataObj)
       .then((obj : any) => {
@@ -92,44 +68,38 @@ export class DatabaseProvider {
     });
   }
 
-  /**
-   * Delete an existing document from a selected database collection
-   */
-
-   deleteDocument(collectionObj : string,
-                  docID : string) : Promise<any>{
-      return new Promise((resolve, reject) => {
-        this._DB
-        .collection(collectionObj)
-        .doc(docID)
-        .delete()
-        .then((obj : any) => {
-          resolve(obj);
-        })
-        .catch((error : any) => {
-          reject(error);
-        });
+  deleteDocument(
+    collectionObj : string,
+    docID : string) : Promise<any>{
+    return new Promise((resolve, reject) => {
+      this._DB
+      .collection(collectionObj)
+      .doc(docID)
+      .delete()
+      .then((obj : any) => {
+        resolve(obj);
+      })
+      .catch((error : any) => {
+        reject(error);
       });
-    }
+    });
+  }
 
-    /**
-     * Update an existing document within a selected database collection
-     */
-
-    updateDocument(collectionObj : string,
-                    docID : string,
-                    dataObj : any) : Promise<any>{
-      return new Promise((resolve, reject) => {
-        this._DB
-        .collection(collectionObj)
-        .doc(docID)
-        .update(dataObj)
-        .then((obj : any) => {
-          resolve(obj);
-        })
-        .catch((error : any) => {
-          reject(error);
-        });
+  updateDocument(
+    collectionObj : string,
+    docID : string,
+    dataObj : any) : Promise<any> {
+    return new Promise((resolve, reject) => {
+      this._DB
+      .collection(collectionObj)
+      .doc(docID)
+      .update(dataObj)
+      .then((obj : any) => {
+        resolve(obj);
+      })
+      .catch((error : any) => {
+        reject(error);
       });
-    }
+    });
+  }
 }

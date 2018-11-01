@@ -33,28 +33,12 @@ export class LoginPage {
         Validators.compose([Validators.required, Validators.minLength(6)])
       ]
     });
+  }
+
+  ionViewDidLoad(){
     this.fingerprintAvailable();
   }
-
-  async fingerprintAvailable(){
-    try{
-      await this.platform.ready();
-      const available = await this.faio.isAvailable();
-      // available == "OK" --> Android
-      // available == "Available" --> Ios
-      if(available == "OK" || available == "Available"){
-        this.showButton = true;
-      }
-      else{
-        this.showButton = false;
-      }
-    }
-    catch(e){
-      console.log(e);
-    }
-  }
-
-  scan(){
+  fingerprintAvailable(){
     this.faio.show({
       clientId: 'Você pode usar sua digital para acessar a conta. Para isso, toque no sensor.',
       clientSecret: 'password',
@@ -96,12 +80,12 @@ export class LoginPage {
           email,
           password
         );
-        await loading.dismiss();
         this.navCtrl.setRoot('MoviesPage');
+        await loading.dismiss();
       } catch (error) {
         await loading.dismiss();
         const alert: Alert = this.alertCtrl.create({
-          message: error.message,
+          message: 'Verifique seu usuário de acesso e tente novamente.<br><br>Caso esqueceu sua senha, clique no botão RECUPERAR SENHA.',
           buttons: [{ text: 'Ok', role: 'cancel' }]
         });
         alert.present();
