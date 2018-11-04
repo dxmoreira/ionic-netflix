@@ -8,6 +8,7 @@ import { firebaseConfig } from './credentials';
 import { MoviesPage } from '../pages/movies/movies';
 import { LoginPage } from '../pages/login/login';
 import { Unsubscribe } from '@firebase/util';
+import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 
 @Component({
   templateUrl: 'app.html'
@@ -15,10 +16,11 @@ import { Unsubscribe } from '@firebase/util';
 export class MyApp {
   rootPage:any = LoginPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private faio: FingerprintAIO) {
     firebase.initializeApp(firebaseConfig);
     const unsubscribe: Unsubscribe = firebase.auth().onAuthStateChanged(user => {
       if (user) {
+        this.fingerprintAvailable();
         this.rootPage = MoviesPage;
         unsubscribe();
       } else {
@@ -32,5 +34,18 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+
+  fingerprintAvailable() {
+    this.faio.show({
+      clientId: 'Você pode usar sua digital para acessar a conta. Para isso, toque no sensor.',
+      clientSecret: 'password'
+    })
+    .then(result => {
+      this.rootPage = MoviesPage;
+    })
+    .catch(error => {
+      console.log('Error: ', error);
+    })
   }
 }

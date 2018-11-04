@@ -3,7 +3,6 @@ import { Alert, AlertController, IonicPage, Loading, LoadingController, NavContr
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
-import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import firebase from 'firebase/app';
 
 @IonicPage()
@@ -20,8 +19,7 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public authProvider: AuthProvider,
-    formBuilder: FormBuilder,
-    private faio: FingerprintAIO
+    formBuilder: FormBuilder
   ) {
     this.loginForm = formBuilder.group({
       email: [
@@ -33,28 +31,6 @@ export class LoginPage {
         Validators.compose([Validators.required, Validators.minLength(6)])
       ]
     });
-  }
-
-  ionViewDidLoad(){
-    this.fingerprintAvailable();
-  }
-  fingerprintAvailable(){
-    this.faio.show({
-      clientId: 'Você pode usar sua digital para acessar a conta. Para isso, toque no sensor.',
-      clientSecret: 'password',
-      disableBackup:true,
-      localizedFallbackTitle: 'Use Pin',
-      localizedReason: 'Please authenticate'
-  })
-  .then((result: any) => 
-    this.navCtrl.push('MoviesPage',{
-      result: result
-    })
-  )
-  .catch((error: any) =>  
-    this.navCtrl.push('MoviesPage',{
-      result: error
-    }));
   }
 
   goToSignup(): void {

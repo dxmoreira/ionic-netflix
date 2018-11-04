@@ -13,37 +13,37 @@
   <div padding>
     <h5>Populares</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor="let filme of populares"><img *ngIf="filme.poster_path" (click)="goToDetails(filme)" [src]="'https://image.tmdb.org/t/p/w200/' + filme.poster_path"></span>
+      <span *ngFor='let movie of movies'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/></span>
     </ion-scroll>
 
     <h5>Mais Votado</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor="let filme of mais_votados"><img *ngIf="filme.poster_path" (click)="goToDetails(filme)" [src]="'https://image.tmdb.org/t/p/w200/' + filme.poster_path"></span>
+      <span *ngFor="let movie of mais_votados"><img *ngIf="movie.poster_path" (click)="goToDetails(movie.id)" [src]="'https://image.tmdb.org/t/p/w200/' + movie.poster_path"></span>
     </ion-scroll>  
 
     <h5>Ação</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor="let filme of acao"><img *ngIf="filme.poster_path" (click)="goToDetails(filme)" [src]="'https://image.tmdb.org/t/p/w200/' + filme.poster_path"></span>
+      <span *ngFor="let movie of acao"><img *ngIf="movie.poster_path" (click)="goToDetails(movie.id)" [src]="'https://image.tmdb.org/t/p/w200/' + movie.poster_path"></span>
     </ion-scroll>  
 
     <h5>Comédia</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor='let filme of comedia'><img *ngIf="filme.poster_path" (click)='goToDetails(filme)' src="{{'https://image.tmdb.org/t/p/w200'+ filme.poster_path}}"/></span>
+      <span *ngFor='let movie of comedia'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+ movie.poster_path}}"/></span>
     </ion-scroll>  
 
     <h5>Drama</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor='let filme of drama'><img *ngIf="filme.poster_path" (click)='goToDetails(filme)' src="{{'https://image.tmdb.org/t/p/w200'+ filme.poster_path}}"/></span>
+      <span *ngFor='let movie of drama'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+ movie.poster_path}}"/></span>
     </ion-scroll>  
 
     <h5>Animação</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor='let filme of animacao'><img *ngIf="filme.poster_path" (click)='goToDetails(filme)' src="{{'https://image.tmdb.org/t/p/w200'+ filme.poster_path}}"/></span>
+      <span *ngFor='let movie of animacao'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+ movie.poster_path}}"/></span>
     </ion-scroll>  
 
     <h5>Documentário</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor='let filme of documentario'><img *ngIf="filme.poster_path" (click)='goToDetails(filme)' src="{{'https://image.tmdb.org/t/p/w200'+ filme.poster_path}}"/></span>
+      <span *ngFor='let movie of documentario'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+ movie.poster_path}}"/></span>
     </ion-scroll>
   </div>
 </ion-content>

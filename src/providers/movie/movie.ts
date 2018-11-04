@@ -12,40 +12,21 @@ export class MovieProvider {
     //console.log('Hello MovieProvider Provider');
   }
 
-  public getTopRatedMovie() {
-    return this.getMovie("top_rated");
-  }
-  
-  public getPopularMovie() {
-    return this.getMovie("popular");
-  } 
-
-  private getMovie(folder) {
-    return this.http.get(this.config.apiEndpoint + "/movie/" + folder + "?api_key=" + this.config.apiKey)
-  }
-
-  public getGenresMovies(){
-    return this.http.get(this.config.apiEndpoint + "/genre/movie/list?api_key=" + this.config.apiKey);
-  }
-
-  public getMoviesByGenre(idGenre: number){
-    return this.http.get(this.config.apiEndpoint + "/genre/" + idGenre + "/movies?api_key=" + this.config.apiKey)
-  }
-
   private getURLParams():URLSearchParams{
     const params: URLSearchParams = new URLSearchParams();
     params.set('api_key', this.config.apiKey);
     return params;
   }
 
-  getMovieDetails(id: string) : Observable<Movie>{
+  getList(selection: string, page = '0'){
     const params = this.getURLParams();
-    params.set('append_to_response','videos');
+    params.set("page", page);
     const reqOptions: RequestOptionsArgs = {
-      params: params + "&language=pt-BR&"
+      params: params
     }
-    return this.http.get(this.config.apiEndpoint+`/movie/${id}`, reqOptions)
-      .map(response =>  response.json() as Movie);
+    //console.log(page);
+    return this.http.get(this.config.apiEndpoint+`/movie/${selection}`, reqOptions)
+      .map(response =>  response.json().results as Movie[]);
   }
 
   searchMovie(term: string, page = '0'): Observable<Movie[]>{
@@ -58,4 +39,31 @@ export class MovieProvider {
     return this.http.get(this.config.apiEndpoint+"/search/movie", reqOptions)
       .map(response =>  response.json().results as Movie[]);
   }
+
+  getMovieDetails(id: string) : Observable<Movie>{
+    const params = this.getURLParams();
+    params.set('append_to_response','videos');
+    const reqOptions: RequestOptionsArgs = {
+      params: params + "&language=pt-BR&"
+    }
+    return this.http.get(this.config.apiEndpoint+`/movie/${id}`, reqOptions)
+      .map(response =>  response.json() as Movie);
+  } 
+
+  private getMovie(folder) {
+    return this.http.get(this.config.apiEndpoint + "/movie/" + folder + "?api_key=" + this.config.apiKey)
+  }
+
+  public getTopRatedMovie() {
+    return this.getMovie("top_rated");
+  }
+
+  public getGenresMovies(){
+    return this.http.get(this.config.apiEndpoint + "/genre/movie/list?api_key=" + this.config.apiKey);
+  }
+
+  public getMoviesByGenre(idGenre: number){
+    return this.http.get(this.config.apiEndpoint + "/genre/" + idGenre + "/movies?api_key=" + this.config.apiKey)
+  }
+  
 }
