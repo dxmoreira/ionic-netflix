@@ -54,6 +54,10 @@ export class MovieProvider {
     return this.http.get(this.config.apiEndpoint + "/movie/" + folder + "?api_key=" + this.config.apiKey)
   }
 
+  public getPopularMovie() {
+    return this.getMovie("popular");
+  }
+
   public getTopRatedMovie() {
     return this.getMovie("top_rated");
   }

@@ -15,17 +15,19 @@ import { SignupPageModule } from '../pages/signup/signup.module';
 import { ResetPasswordPageModule } from '../pages/reset-password/reset-password.module';
 import { FingerprintAIO } from '@ionic-native/fingerprint-aio';
 import { DatabaseProvider } from '../providers/database/database';
+import { SearchPageModule } from '../pages/search/search.module';
 
 @NgModule({
   declarations: [
     MyApp,
-    TabsPage
+    TabsPage,
   ],
   imports: [
     BrowserModule,
     MoviesModule,
     LoginPageModule,
     SignupPageModule,
+    SearchPageModule,
     ResetPasswordPageModule,
     IonicModule.forRoot(MyApp, {
       platforms: {

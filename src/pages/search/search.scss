@@ -1,0 +1,24 @@
+page-search {
+    .filme {
+        padding: 10px;
+        min-height: 240px
+    }
+    .scroll-content {
+        overflow: auto;
+    }
+    .logo {
+      padding-right: 35px;
+    }
+    .title-ios {
+      padding-right: 80px;
+    }
+    ion-searchbar {
+        .searchbar-input {
+            color: $white !important;
+            background-color: #262626 !important;
+        }
+        .searchbar-input::-webkit-input-placeholder {
+            color: $white;
+        }
+    }
+}

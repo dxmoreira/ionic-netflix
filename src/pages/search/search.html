@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title class="logo" navPop><img src="assets/netflix-logo.png" width=100/></ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logOut()">
+        <ion-icon name="ios-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-searchbar #search (ionChange)="searchMovie(search.value)" placeholder="Buscar"></ion-searchbar>
+  <ion-row padding>
+    <div *ngFor="let movie of movies" col-6 col-sm-3 float-left no-padding class="filme" (click)="goToDetails(movie.id)">
+      <img *ngIf="movie.poster_path" src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/>
+    </div>
+  </ion-row>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>    
+</ion-content>

@@ -10,10 +10,13 @@
 </ion-header>
 
 <ion-content no-padding class='page-content'>
+  <ion-buttons end class='search-bar'>
+    <ion-searchbar #search (click)='searchMovie()' placeholder="Buscar"></ion-searchbar>
+  </ion-buttons>
   <div padding>
     <h5>Populares</h5>
     <ion-scroll scrollX="true" no-padding>
-      <span *ngFor='let movie of movies'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/></span>
+      <span *ngFor='let movie of popular'><img *ngIf="movie.poster_path" (click)='goToDetails(movie.id)' src="{{'https://image.tmdb.org/t/p/w200'+movie.poster_path}}"/></span>
     </ion-scroll>
 
     <h5>Mais Votado</h5>
