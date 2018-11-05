@@ -19,7 +19,7 @@ Para iniciar o aplicativo, exibindo no navegador:
 *Nota: Recomendo utilizar a ferramenta de desenvolvimento de navegador (F12), na exibição do dispositivo móvel.
 
 ```bash
-npm start
+npm install
 ```
 
 Para experimentar diferentes visualizações fornecidas pelo Ionic de acordo com a plataforma em que o aplicativo é executado, execute o comando no terminal:
